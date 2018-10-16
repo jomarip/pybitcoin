@@ -103,10 +103,10 @@ class BitcoinPrivateKey():
     def to_wif(self):
         if self._compressed:
             return encode_privkey(
-                self._ecdsa_private_key.to_string(), 'wif_compressed')
+                self._ecdsa_private_key.to_string().hex(), 'wif_compressed')
         else:
             return b58check_encode(
-                self.to_bin(), version_byte=self.wif_version_byte())
+                self.to_bin().hex(), version_byte=self.wif_version_byte())
 
     def to_pem(self):
         return self._ecdsa_private_key.to_pem()

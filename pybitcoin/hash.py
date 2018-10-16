@@ -19,7 +19,7 @@ def bin_sha256(bin_s):
 
 def bin_checksum(bin_s):
     """ Takes in a binary string and returns a checksum. """
-    return bin_sha256(bin_sha256(bin_s))[:4]
+    return bin_sha256(bin_sha256(bin_s.encode("utf-8")))[:4]
 
 
 def bin_double_sha256(bin_s):

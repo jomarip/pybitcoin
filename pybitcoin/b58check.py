@@ -24,11 +24,11 @@ def b58check_encode(bin_s, version_byte=0):
     # calculate the number of leading zeros
     num_leading_zeros = len(re.match(r'^\x00*', bin_s).group(0))
     # add in the checksum add the end
-    bin_s = bin_s + bin_checksum(bin_s)
+    bin_s = bin_s + bin_checksum(bin_s).hex()
     # convert from b2 to b16
-    hex_s = hexlify(bin_s)
+    hex_s = hexlify(bin_s.encode("utf-8"))
     # convert from b16 to b58
-    b58_s = change_charset(hex_s, HEX_KEYSPACE, B58_KEYSPACE)
+    b58_s = change_charset(str(hex_s,"utf-8"), HEX_KEYSPACE, B58_KEYSPACE)
 
     return B58_KEYSPACE[0] * num_leading_zeros + b58_s
 
