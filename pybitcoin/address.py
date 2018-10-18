@@ -12,7 +12,7 @@ from .b58check import b58check_encode, b58check_decode
 
 
 def bin_hash160_to_address(bin_hash160, version_byte=0):
-    return b58check_encode(bin_hash160, version_byte=version_byte)
+    return b58check_encode(bin_hash160.hex(), version_byte=version_byte)
 
 
 def hex_hash160_to_address(hash160, version_byte=0):

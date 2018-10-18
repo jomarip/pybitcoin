@@ -60,7 +60,7 @@ def get_public_key_format(public_key_string):
 
         if len(public_key_string) == 66:
             return CharEncoding.hex, PubkeyType.compressed
-    print(public_key_string)
+    
     raise ValueError(_errors['IMPROPER_PUBLIC_KEY_FORMAT'])
 
 

@@ -74,11 +74,11 @@ class BitcoinPrivateKey():
             # less than the curve order
             while True:
                 passphrase = create_passphrase(bits_of_entropy=160)
-                hex_private_key = hashlib.sha256(passphrase).hexdigest()
+                hex_private_key = hashlib.sha256(passphrase.encode("utf-8")).hexdigest()
                 if int(hex_private_key, 16) < cls._curve.order:
                     break
         else:
-            hex_private_key = hashlib.sha256(passphrase).hexdigest()
+            hex_private_key = hashlib.sha256(passphrase.encode("utf-8")).hexdigest()
             if not (int(hex_private_key, 16) < cls._curve.order):
                 raise ValueError(_errors["CURVE_ORDER_EXCEEDED"])
 

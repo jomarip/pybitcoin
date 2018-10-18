@@ -31,7 +31,7 @@ def bin_hash160(s, hex_format=False):
     """
     if hex_format and is_hex(s):
         s = unhexlify(s)
-    return hashlib.new('ripemd160', bin_sha256(s)).digest()
+    return hashlib.new('ripemd160', bin_sha256(s.encode("utf-8"))).digest()
 
 
 def hex_hash160(s, hex_format=False):
