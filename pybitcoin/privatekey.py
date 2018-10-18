@@ -120,15 +120,16 @@ class BitcoinPrivateKey():
             ecdsa_public_key = self._ecdsa_private_key.get_verifying_key()
 
             bin_public_key_string = PUBKEY_MAGIC_BYTE + \
-                ecdsa_public_key.to_string()
-
+                ecdsa_public_key.to_string().hex()
+			#remove extra unknown character that was causing 129 characters vs 128
+            bin_public_key_string = bin_public_key_string[1:]   
+            
             if self._compressed:
                 bin_public_key_string = compress(bin_public_key_string)
 
             # create the public key object from the public key string
             self._public_key = BitcoinPublicKey(
-                bin_public_key_string,
-                version_byte=self._pubkeyhash_version_byte)
+                bin_public_key_string, version_byte=self._pubkeyhash_version_byte)
 
         # return the public key object
         return self._public_key
