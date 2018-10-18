@@ -22,4 +22,5 @@ private_key.to_wif()
 #public key
 public_key = private_key.public_key()
 public_key.to_hex()
-public_key_2 = BitcoinPublicKey(public_key.to_hex())
+public_key_2 = BitcoinPublicKey(str(public_key.to_hex(),"utf-8")[1:])
+print(public_key.to_hex() == public_key_2.to_hex())

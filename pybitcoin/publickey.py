@@ -38,7 +38,6 @@ class PubkeyType():
 
 def get_public_key_format(public_key_string):
     if not isinstance(public_key_string, str):
-        print(type(public_key_string))
         raise ValueError('Public key must be a string.')
 
     if len(public_key_string) == 64:
@@ -61,7 +60,7 @@ def get_public_key_format(public_key_string):
 
         if len(public_key_string) == 66:
             return CharEncoding.hex, PubkeyType.compressed
-
+    print(public_key_string)
     raise ValueError(_errors['IMPROPER_PUBLIC_KEY_FORMAT'])
 
 
@@ -136,10 +135,10 @@ class BitcoinPublicKey():
                 raise ValueError(_errors['IMPROPER_PUBLIC_KEY_FORMAT'])
 
     def to_bin(self):
-        return self._bin_public_key.encode("utf-8")[1:]
+        return (self._bin_public_key)
 
     def to_hex(self):
-        return hexlify(self.to_bin())
+        return (self.to_bin().encode())
 
     def to_pem(self):
         return self._ecdsa_public_key.to_pem()
