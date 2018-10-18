@@ -7,7 +7,7 @@ pybitcoin
 [![PyPI](https://img.shields.io/pypi/l/pybitcoin.svg)](https://github.com/namesystem/pybitcoin/blob/master/LICENSE)
 [![Slack](http://slack.blockstack.org/badge.svg)](http://slack.blockstack.org/)
 
-Python library with tools for Bitcoin and other cryptocurrencies.
+Converted Python 2 to Python 3 library with tools for Bitcoin and other cryptocurrencies. Keylib module which is installed separately needs the import file to be adjusted. just add a . in front of the files so the right path can be figured out.
 
 ## Usage
 
@@ -53,8 +53,7 @@ True
 'shepherd mais pack rate enamel horace diva filesize maximum really roar mall'
 >>> private_key.to_hex()
 '91149ee24f1ee9a6f42c3dd64c2287781c8c57a6e8e929c80976e586d5322a3d'
->>> priv2 = BitcoinPrivateKey.from_passphrase(priv2.passphrase())
->>> print private_key.to_hex() == priv2.to_hex()
+>>> print(private_key.to_hex() == BitcoinPrivateKey.from_passphrase(private_key.passphrase()).to_hex())
 True
 ```
 
@@ -108,4 +107,4 @@ Meanwhile, for something a bit more ambitious, check the issues section for outs
 
 ## Notice
 
-pybitcoin is still in beta. Developers using pybitcoin are encouraged to inspect the code for themselves and perform their own tests. We are committed to ensuring that this library behaves exactly as it is supposed to under all conditions, and have plans to ramp up our testing efforts going forward.
+pybitcoin is still in beta. Developers using pybitcoin are encouraged to inspect the code for themselves and perform their own tests.
